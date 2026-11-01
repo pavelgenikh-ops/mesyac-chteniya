@@ -1,0 +1,64 @@
+/* Фирменный стиль АО СК «Компакт» — стандарт портала kompakt-24.com («Библиотека для ИИ», гл. 14), собран 18.10.2026.
+   Копировать в папку приложения вместе с папкой «шрифты» (приложение самодостаточно, ссылки только относительные).
+   Только эти токены; новых цветов не заводить — оттенки через color-mix(). Яркие #1E2E72 / #DD127B (#004E96 / #EC008C) — только внутри логотипа. */
+
+@font-face { font-family: Manrope; src: url("шрифты/manrope-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: Manrope; src: url("шрифты/manrope-cyrillic-wght-normal.woff2") format("woff2"); font-weight: 200 800; font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: Lora; font-style: italic; src: url("шрифты/lora-latin-wght-italic.woff2") format("woff2"); font-weight: 400 700; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: Lora; font-style: italic; src: url("шрифты/lora-cyrillic-wght-italic.woff2") format("woff2"); font-weight: 400 700; font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "JetBrains Mono"; src: url("шрифты/jetbrains-mono-latin-wght-normal.woff2") format("woff2"); font-weight: 100 800; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "JetBrains Mono"; src: url("шрифты/jetbrains-mono-cyrillic-wght-normal.woff2") format("woff2"); font-weight: 100 800; font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+
+:root {
+  --k-paper: #F4F2EC;   /* бумага — фон страницы, не белый и не тёмный */
+  --k-white: #FCFCFA;   /* карточки, таблицы, плашки */
+  --k-ink: #1C2738;     /* чернила — заголовки и текст вместо чёрного */
+  --k-graph: #48556A;   /* графит — подписи, второстепенный текст */
+  --k-deep: #2A4A70;    /* глубокий синий — наведение, тёмные плашки */
+  --k-blue: #3D6492;    /* фирменный синий — главный акцент: кнопки, рубрики, главное слово */
+  --k-lblue: #6B8FB5;   /* светлый синий — значки, точки, подсветка */
+  --k-fog: #CBD9E7;     /* туман — светлые плашки */
+  --k-haze: #E7EDF3;    /* дымка — подложка иконок и врезок */
+  --k-rose: #B3608C;    /* пыльная роза — редкий штрих: черта, точка, фокус; не больше 5 % экрана */
+  --k-lrose: #DFC0D2;   /* светлая роза — подложка выделенного блока */
+  --k-line: rgba(28, 39, 56, 0.1);
+  --k-sig: linear-gradient(90deg, var(--k-blue) 0 61%, var(--k-rose) 61% 100%);   /* подпись стиля: синий 61 % / роза 39 % */
+  --k-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --k-sans: Manrope, "Segoe UI", sans-serif;
+  --k-serif: Lora, Georgia, serif;
+  --k-mono: "JetBrains Mono", Consolas, monospace;
+}
+
+body { background: var(--k-paper); color: var(--k-ink); font-family: var(--k-sans); font-weight: 400; line-height: 1.6; }
+
+/* заголовок — Manrope Light, межбуквенный −3,5 %; главное слово — фирменным синим с розовой чертой */
+.k-title { font-weight: 300; letter-spacing: -0.035em; word-spacing: .1em; color: var(--k-ink); line-height: 1.15; }
+.k-accent { position: relative; display: inline-block; color: var(--k-blue); font-weight: 400; }
+.k-accent::after { content: ''; position: absolute; left: .04em; right: .04em; bottom: .02em; height: max(3px, .06em); border-radius: 3px;
+  background: var(--k-rose); transform-origin: left center; transform: scaleX(var(--u, 1)); transition: transform .7s var(--k-ease); }
+.k-sub { font-family: var(--k-serif); font-style: italic; color: var(--k-graph); }          /* подзаголовок, цитата, подпись */
+.k-rubric { font-weight: 700; text-transform: uppercase; letter-spacing: .14em; font-size: .78em; color: var(--k-blue); }
+.k-num { font-family: var(--k-mono); font-variant-numeric: tabular-nums; }                   /* коды, номера, цифры в таблицах */
+
+/* карточка: белая, линия 1 px, скругление 22 px, сверху подпись стиля 61/39 */
+.k-card { position: relative; background: var(--k-white); border: 1px solid var(--k-line); border-radius: 22px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(28, 39, 56, .18); }
+.k-card.sig::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--k-sig); }
+
+/* кнопки-«таблетки»: главная — синяя с белым текстом, вторая — прозрачная с тонкой рамкой */
+.k-btn-primary, .k-btn { display: inline-flex; align-items: center; gap: .5em; border-radius: 100px; padding: .7em 1.4em; font: 600 1em var(--k-sans);
+  cursor: pointer; transition: transform .3s var(--k-ease), background .3s var(--k-ease); }
+.k-btn-primary { background: var(--k-blue); color: var(--k-white); border: 0; }
+.k-btn-primary:hover { background: var(--k-deep); transform: translateY(-2px); }
+.k-btn { background: transparent; color: var(--k-ink); border: 1px solid var(--k-line); }
+.k-btn:hover { transform: translateY(-2px); }
+:focus-visible { outline: 3px solid var(--k-rose); outline-offset: 3px; }
+
+/* синяя плашка для слова и матовое «стекло» (бумага 72 % + размытие 14 px) — шапка, текст поверх фото и видео */
+.k-pill { background: var(--k-blue); color: var(--k-white); padding: 0 .22em .04em; border-radius: .22em; }
+.k-glass { background: rgba(244, 242, 236, .72); backdrop-filter: blur(14px); border: 1px solid var(--k-line); border-radius: 22px; }
+
+/* витрина / первый экран: фон-«небо» + облака + зерно бумаги (рабочие экраны — тихие, без этого) */
+.k-hero { background: radial-gradient(135% 120% at 50% -10%, #ebf0f4 0%, #eff1ee 48%, #dfe7ef 100%), #e7ecf1; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
